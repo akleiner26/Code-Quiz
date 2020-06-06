@@ -1,0 +1,17 @@
+header{
+    color: rgb(16, 80, 80);
+    font-size: medium;
+}
+
+a:active{
+    color: rgb(16, 80, 80);
+}
+
+a:visited{
+    color: rgb(16, 80, 80);
+}
+
+.button {
+    background-color: rgb(16, 80, 80);
+    color: white;
+}
