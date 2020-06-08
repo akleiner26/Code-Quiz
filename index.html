@@ -12,19 +12,23 @@
 
 <body>
     <header>
-        <a href="" class="float-left">View High Scores</a>
-        <section class="float-right" id="counter">Timer</section>
+        <a href="" class="float-left ml-2">View High Scores</a>
+        <section class="float-right mr-2" id="counter">Timer</section>
     </header>
     <main class="container">
         <section class="row">
             <h1 class="text-center col-12 mt-5" id="gameTitle">Coding Quiz Challenge</h1>
-            <h4 class="text-center col-12 mt-5" id="questions">Try to Answer the following code-related questions within the time
+            <h4 class="text-center col-12 mt-5" id="questions">Try to Answer the following code-related questions within
+                the time
                 limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</h4>
-            <button type="button" class="btn col-2 offset-5 mt-3 button" id="buttons">Take Quiz</button>
+            <section class="btn col-2 offset-5 mt-3" id="responses">
+                <button onclick="startQuiz()" type="button" class= "button" id="buttons">Take Quiz</button>
+            </section>
         </section>
     </main>
 
-    <link src="/assets/main.js">
+   
+    <script src="main.js"></script>
 </body>
 
 </html>
