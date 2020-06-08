@@ -1,3 +1,16 @@
+//variables for page routing
+var header = document.querySelector("#header");
+var secondary = document.querySelector("#secondary");
+var responses = document.querySelector("#responses");
+var buttons = document.querySelector("button")
+var startQuiz = document.querySelector("#starter");
+var timeLeft = document.querySelector("#counter");
+
+
+//global variables
+var score = 0;
+var secondsLeft = 100;
+
 //Make array with questions and answers
 var questions = [
     {
@@ -41,3 +54,23 @@ var questions = [
         answer: 4
     }
 ];
+
+//write function for timer start when start quiz button is pushed
+
+
+function runTimer(){
+    var timerInterval = setInterval(function() {
+    secondsLeft --;
+    timeLeft.textContent = secondsLeft;
+
+    if (secondsLeft === 0) {
+        clearInterval(timerInterval);
+        header.textContent = "Time is Up!"
+        secondary.textContent = "Your score is " + score;
+        responses.textContent = "View Leaderboard to see how your score compares!"
+        buttons.textContent = "View Leaderboard"
+    }
+}, 1000);
+}
+console.log(secondsLeft)
+startQuiz.addEventListener("click", runTimer());
