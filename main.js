@@ -68,35 +68,41 @@ function runTimer(){
         header.textContent = "Time is Up!";
         secondary.textContent = "Your score is " + score;
         responses.textContent = "View Leaderboard";
-        responses.setAttribute = "type=button color=white backgroundColor=rgb(16, 80, 80)";
+        responses.setAttribute("type", "button")
         
         
     }
 }, 1000);
 }
 console.log(secondsLeft)
-startQuiz.addEventListener("click", runTimer());
+
 
 //write function to populate first question
 function populateQuestion1(){
-    header.textContent = questions[1].questionText;
+    header.textContent = questions[0].questionText;
     secondary.textContent = " ";
-    responses.textContent = questions[1].choice1;
+    responses.textContent = questions[0].choice1;
     var secAnswer = responses.createElement(button);
-    secAnswer.textContent = questions[1].choice2;
+    secAnswer.setAttribute("type","button");
+    secAnswer.textContent = questions[0].choice2;
     responses.appendChild(secAnswer);
     var thirdAnswer = responses.createElement(button);
-    thirdAnswer.textContent = questions[1].choice3;
+    thirdAnswer.setAttribute("type","button");
+    thirdAnswer.textContent = questions[0].choice3;
     responses.appendChild(thirdAnswer);
     var fourthAnswer = responses.createElement(button);
-    fourthAnswer.textContent = question[1].choice4;
+    fourthAnswer.setAttribute("type","button");
+    fourthAnswer.textContent = question[0].choice4;
+    fourthAnswer.appendChild(fourthAnswer);
 
 }
 
 //write function to start the quiz
 function begin(){
-    if (startQuiz.addEventListener("click")){
         runTimer();
         populateQuestion1();
-    }
 }
+
+startQuiz.addEventListener("click", begin);
+
+
