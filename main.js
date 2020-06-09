@@ -55,7 +55,7 @@ var questions = [
     }
 ];
 
-//write function for timer start when start quiz button is pushed
+//write function for timer
 
 
 function runTimer(){
@@ -65,12 +65,38 @@ function runTimer(){
 
     if (secondsLeft === 0) {
         clearInterval(timerInterval);
-        header.textContent = "Time is Up!"
+        header.textContent = "Time is Up!";
         secondary.textContent = "Your score is " + score;
-        responses.textContent = "View Leaderboard to see how your score compares!"
-        buttons.textContent = "View Leaderboard"
+        responses.textContent = "View Leaderboard";
+        responses.setAttribute = "type=button color=white backgroundColor=rgb(16, 80, 80)";
+        
+        
     }
 }, 1000);
 }
 console.log(secondsLeft)
 startQuiz.addEventListener("click", runTimer());
+
+//write function to populate first question
+function populateQuestion1(){
+    header.textContent = questions[1].questionText;
+    secondary.textContent = " ";
+    responses.textContent = questions[1].choice1;
+    var secAnswer = responses.createElement(button);
+    secAnswer.textContent = questions[1].choice2;
+    responses.appendChild(secAnswer);
+    var thirdAnswer = responses.createElement(button);
+    thirdAnswer.textContent = questions[1].choice3;
+    responses.appendChild(thirdAnswer);
+    var fourthAnswer = responses.createElement(button);
+    fourthAnswer.textContent = question[1].choice4;
+
+}
+
+//write function to start the quiz
+function begin(){
+    if (startQuiz.addEventListener("click")){
+        runTimer();
+        populateQuestion1();
+    }
+}
