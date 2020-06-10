@@ -62,7 +62,6 @@ var questions = [
 
 //write function for timer
 
-
 function runTimer() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -88,7 +87,6 @@ function runTimer() {
 }
 console.log(secondsLeft)
 
-
 //write function to populate first question
 function populateQuestion1() {
     header.textContent = questions[0].questionText;
@@ -108,43 +106,36 @@ function populateQuestion1() {
 
 //Write function to check for correct answer
 
-
 var buttonList = document.querySelectorAll(".button");
 for (var i = 0; i < buttonList.length; i++) {
-  buttonList[i].addEventListener('click', function(event) {
-    if (event.target.textContent === questions[questionIndex].answer) {
-        secondary.textContent = "Correct Answer!";
-        score = score + 10;
-    } else {
-        secondary.textContent = "Incorrect Answer!";
-        score = score - 10;
-        secondsLeft = secondsLeft - 10;
-    }
-    questionIndex++;
-    populateQuestion();
-    document.querySelector("#score").textContent = score
-})
+    buttonList[i].addEventListener('click', function (event) {
+        if (event.target.textContent === questions[questionIndex].answer) {
+            secondary.textContent = "Correct Answer!";
+            score = score + 10;
+        } else {
+            secondary.textContent = "Incorrect Answer!";
+            score = score - 10;
+            secondsLeft = secondsLeft - 10;
+        }
+        questionIndex++;
+        populateQuestion();
+        document.querySelector("#score").textContent = score
+    })
 }
 
-function endPage(){
+
+function endPage() {
     timeLeft.textContent = "0"
-            clearInterval(timerInterval);
-            header.textContent = "Time is Up!";
-            secondary.textContent = "Your score is " + score;
-            firstButton.style.display = "block";
-            firstButton.textContent = "View Leaderboard";
-            responses.setAttribute("type", "button")
-            secondButton.style.display = "none";
-            thirdButton.style.display = "none";
-            fourthButton.style.display = "none";
-            scoreHead.style.display = "none";
+    header.textContent = "Time is Up!";
+    secondary.textContent = "Your score is " + score;
+    firstButton.style.display = "block";
+    firstButton.textContent = "View Leaderboard";
+    responses.setAttribute("type", "button")
+    secondButton.style.display = "none";
+    thirdButton.style.display = "none";
+    fourthButton.style.display = "none";
+    scoreHead.style.display = "none";
 }
-
-
-
-
-
-
 
 function populateQuestion() {
     header.textContent = questions[questionIndex].questionText;
@@ -156,12 +147,10 @@ function populateQuestion() {
 
 }
 
-
 //write function to start the quiz
 function begin() {
     runTimer();
     populateQuestion1();
-    endPage();
 }
 
 //Functions that run the quiz
