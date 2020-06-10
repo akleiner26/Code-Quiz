@@ -19,7 +19,7 @@ var questions = [
         choice2: "<js>",
         choice3: "<scripting>",
         choice4: "<javascript>",
-        answer: 1
+        answer: "<script>"
     },
     {
         questionText: "Where is the correct place to insert a JavaScript?",
@@ -81,20 +81,87 @@ console.log(secondsLeft)
 function populateQuestion1(){
     header.textContent = questions[0].questionText;
     secondary.textContent = " ";
-    responses.textContent = questions[0].choice1;
-    var secAnswer = responses.createElement(button);
+    responses.style.border="thin solid black"
+   
+    buttons.style.display = "none";
+    var firstAnswerDiv = document.createElement("div");
+    var firstAnswer = document.createElement("button");
+    firstAnswer.setAttribute("type","button");
+    firstAnswer.setAttribute("id","buttonOne");
+    firstAnswer.textContent = questions[0].choice1;
+    firstAnswerDiv.appendChild(firstAnswer);
+    responses.appendChild(firstAnswerDiv);
+    var secondAnswerDiv = document.createElement("div");
+    var secAnswer = document.createElement("button");
     secAnswer.setAttribute("type","button");
+    secAnswer.setAttribute("id","buttonTwo");
     secAnswer.textContent = questions[0].choice2;
-    responses.appendChild(secAnswer);
-    var thirdAnswer = responses.createElement(button);
+    secondAnswerDiv.appendChild(secAnswer);
+    responses.appendChild(secondAnswerDiv);
+    var thirdAnswerDiv = document.createElement("div");
+    var thirdAnswer = document.createElement("button");
     thirdAnswer.setAttribute("type","button");
+    thirdAnswer.setAttribute("id","buttonThree");
     thirdAnswer.textContent = questions[0].choice3;
-    responses.appendChild(thirdAnswer);
-    var fourthAnswer = responses.createElement(button);
+    thirdAnswerDiv.appendChild(thirdAnswer);
+    responses.appendChild(thirdAnswerDiv);
+    var fourthAnswerDiv = document.createElement("div");
+    var fourthAnswer = document.createElement("button");
     fourthAnswer.setAttribute("type","button");
-    fourthAnswer.textContent = question[0].choice4;
-    fourthAnswer.appendChild(fourthAnswer);
+    fourthAnswer.setAttribute("id","buttonFour");
+    fourthAnswer.textContent = questions[0].choice4;
+    fourthAnswerDiv.appendChild(fourthAnswer);
+    responses.appendChild(fourthAnswerDiv);
+//write new variables for button routing
+var firstButton = document.querySelector("#buttonOne");
+var secondButton = document.querySelector("buttonTwo");
+var thirdButton = document.querySelector("#buttonThree");
+var fourthButton = document.querySelector("#buttonFour");
+//write if statement for responses
 
+}
+//Write function to check for correct answer
+function checkAnswerOne (){
+    responses.addEventListener("click", function(event){
+        console.log(event.target.textContent)
+        if (event.target.textContent === questions[0].answer){
+            secondary.textContent = "Correct Answer!";
+            score = score + 10;
+        } else if ((event.target.textContent) !== (questions[0].answer)){
+            secondary.textContent = "Incorrect Answer!";
+            score = score - 10;
+            secondsLeft = secondsLeft - 10;
+        }
+        
+    })
+ }
+
+
+function populateQuestion2(){
+    header.textContent = questions[1].questionText;
+    secondary.textContent = " ";
+    firstButton.textContent = questions[1].choice1;
+    secondButton.textContent = questions[1].choice2;
+    thirdButton.textContent = questions[1].choice3;
+    fourthButton.textContent = questions[1].choice4;
+}
+
+function populateQuestion3(){
+    header.textContent = questions[2].questionText;
+    secondary.textContent = " ";
+    firstButton.textContent = questions[2].choice1;
+    secondButton.textContent = questions[2].choice2;
+    thirdButton.textContent = questions[2].choice3;
+    fourthButton.textContent =  questions[2].choice4;
+}
+
+function populateQuestion4(){
+    header.textContent = questions[3].questionText;
+    secondary.textContent = " ";
+    firstButton.textContent = questions[3].choice1;
+    secondButton.textContent = questions[3].choice2;
+    thirdButton.textContent = questions[3].choice3;
+    fourthButton.textContent = questions[3].choice4;
 }
 
 //write function to start the quiz
@@ -103,6 +170,8 @@ function begin(){
         populateQuestion1();
 }
 
+//Functions that run the quiz
 startQuiz.addEventListener("click", begin);
+checkAnswerOne();
 
 

@@ -3,15 +3,16 @@ header{
     font-size: medium;
 }
 
-a:active{
+a:active, a:visited{
     color: rgb(16, 80, 80);
 }
 
-a:visited{
-    color: rgb(16, 80, 80);
-}
-
-.button {
+button {
     background-color: rgb(16, 80, 80);
     color: white;
+    padding: 15px;
+    width: 200px;
+    height: 50px;
+    float: left;
+    margin: 20px;
 }
