@@ -10,7 +10,15 @@ var secondButton = document.getElementById("buttonTwo");
 var thirdButton = document.getElementById("buttonThree");
 var fourthButton = document.getElementById("buttonFour");
 var scoreHead = document.getElementById("scoreHead");
+var firstPlaceName = document.getElementById("firstPlaceScore");
+var secondPlaceName = document.getElementById("secondPlaceName");
+var thirPlaceName = document.getElementById("thirdPlaceName");
+var firstPlaceScore = document.getElementById("firstPlaceScore");
+var secondPlaceScore = document.getElementById("secondPlaceScore");
+var thirdPlaceScore = document.getElementById("thirdPlaceScore");
 var questionIndex = 0;
+var scores = [];
+var userNames = [];
 
 //global variables
 var score = 0;
@@ -97,6 +105,7 @@ function populateQuestion1() {
     secondButton.style.display = "block";
     thirdButton.style.display = "block";
     fourthButton.style.display = "block";
+    scoreHead.style.display = "block";
     firstButton.textContent = questions[0].choice1;
     secondButton.textContent = questions[0].choice2;
     thirdButton.textContent = questions[0].choice3;
@@ -156,3 +165,38 @@ function begin() {
 //Functions that run the quiz
 startQuiz.addEventListener("click", begin);
 
+//function set to Open Leaderboard
+function goToLeaderboard(){
+    saveScore();
+    var userName = prompt("Enter Your Initials to Join the Leaderboard");
+    localStorage.setItem("scores", JSON.stringify(scores));
+    localStorage.setItem("userNames", JSON.stringify(userNames));
+    window.open("/highScorePage.html");
+    localStorage.getItem()
+    userNames = JSON.parse(userNames);
+    scores = JSON.parse(scores);
+    firstPlaceName.textContent = userNames[0];
+    secondPlaceName.textContent = userNames [1];
+    thirdPlaceName.textContent = userNames [2];
+    firstPlaceScore.textContent = score[0];
+    secondPlaceScore.textContent = score[1];
+    thirdPlaceScore.textContent = score[2];
+}
+
+//function to add score to scores array in order of value
+function saveScore() {
+    for (var i = 0; i <= scores.length; i++) {
+        if (score >= scores[i]) {
+            scores.splice(i, 0, score);
+            userNames.splice(i,0,userName);
+        } else scores.push(score);
+        userNames.push(userName);
+    }
+}
+
+
+
+firstButton.addEventListener("click", function (){
+    saveScore();
+    goToLeaderboard();
+})

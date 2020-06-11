@@ -16,6 +16,7 @@ button {
     margin: 20px;
 }
 
-#buttonOne, #buttonTwo, #buttonThree, #buttonFour{
+#scoreHead, #buttonOne, #buttonTwo, #buttonThree, #buttonFour{
     display:none;
 }
+
