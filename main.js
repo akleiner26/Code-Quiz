@@ -158,7 +158,7 @@ function begin() {
 startQuiz.addEventListener("click", begin);
 
 function saveScore() {
-
+    console.log(score);
     userName = prompt("Enter Your Initials to Join the Leaderboard");
     scores.unshift(score);
     userNames.unshift(userName);
