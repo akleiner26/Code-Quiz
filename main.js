@@ -1,4 +1,3 @@
-//variables for page routing
 var header = document.querySelector("#header");
 var secondary = document.querySelector("#secondary");
 var responses = document.querySelector("#responses");
@@ -22,12 +21,9 @@ var userName = " ";
 var questionIndex = 0;
 var scores = [scores];
 var userNames = [userNames];
-
-//global variables
 var score = 0;
 var secondsLeft = 30;
 
-//Make array with questions and answers
 var questions = [
     {
         questionText: "Inside which element do we put the JavaScript?",
@@ -71,8 +67,6 @@ var questions = [
     }
 ];
 
-//write function for timer
-
 function runTimer() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
@@ -96,9 +90,7 @@ function runTimer() {
     }, 1000);
     return secondsLeft;
 }
-console.log(secondsLeft)
 
-//write function to populate first question
 function populateQuestion1() {
     header.textContent = questions[0].questionText;
     secondary.textContent = " ";
@@ -115,8 +107,6 @@ function populateQuestion1() {
     fourthButton.textContent = questions[0].choice4;
     document.querySelector("#score").textContent = score
 }
-
-//Write function to check for correct answer
 
 var buttonList = document.querySelectorAll(".button");
 for (var i = 0; i < buttonList.length; i++) {
@@ -158,17 +148,13 @@ function populateQuestion() {
 
 }
 
-//write function to start the quiz
 function begin() {
     runTimer();
     populateQuestion1();
 }
 
-//Functions that run the quiz
 startQuiz.addEventListener("click", begin);
 
-
-//function to add score to scores array in order of value
 function saveScore() {
 
     userName = prompt("Enter Your Initials to Join the Leaderboard");
@@ -178,17 +164,10 @@ function saveScore() {
     localStorage.setItem("userNames", JSON.stringify(userNames));
 }
 
-
-
-// leaderboardButton.addEventListener("click", function () {
-//     saveScore();
-// })
-
-retakeButton.addEventListener("click", function(){
+retakeButton.addEventListener("click", function () {
     saveScore();
 })
 
-//repopulate arrays
 var savedUser = localStorage.getItem("userNames");
 var savedScore = localStorage.getItem("scores");
 userNames = JSON.parse(savedUser);
