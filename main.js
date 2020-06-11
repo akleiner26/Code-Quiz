@@ -20,8 +20,8 @@ var leaderboardButton = document.getElementById("leaderboard");
 var retakeButton = document.getElementById("retake");
 var userName = " ";
 var questionIndex = 0;
-var scores = [];
-var userNames = [];
+var scores = [scores];
+var userNames = [userNames];
 
 //global variables
 var score = 0;
@@ -172,8 +172,8 @@ startQuiz.addEventListener("click", begin);
 function saveScore() {
 
     userName = prompt("Enter Your Initials to Join the Leaderboard");
-    scores.push(score);
-    userNames.push(userName);
+    scores.unshift(score);
+    userNames.unshift(userName);
     localStorage.setItem("scores", JSON.stringify(scores));
     localStorage.setItem("userNames", JSON.stringify(userNames));
 }
@@ -187,3 +187,9 @@ function saveScore() {
 retakeButton.addEventListener("click", function(){
     saveScore();
 })
+
+//repopulate arrays
+var savedUser = localStorage.getItem("userNames");
+var savedScore = localStorage.getItem("scores");
+userNames = JSON.parse(savedUser);
+scores = JSON.parse(savedScore);
