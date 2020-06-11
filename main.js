@@ -1,7 +1,7 @@
 var header = document.querySelector("#header");
 var secondary = document.querySelector("#secondary");
 var responses = document.querySelector("#responses");
-var buttons = document.querySelector("button")
+var buttons = document.querySelector("button");
 var startQuiz = document.querySelector("#starter");
 var timeLeft = document.querySelector("#counter");
 var firstButton = document.getElementById("buttonOne");
@@ -73,11 +73,11 @@ function runTimer() {
         timeLeft.textContent = secondsLeft;
 
         if (secondsLeft <= 0 || questionIndex >= questions.length) {
-            timeLeft.textContent = "0"
+            timeLeft.textContent = "0";
             clearInterval(timerInterval);
             header.textContent = "Time is Up!";
             secondary.textContent = "Your score is " + score;
-            responses.setAttribute("type", "button")
+            responses.setAttribute("type", "button");
             firstButton.style.display = "none";
             secondButton.style.display = "none";
             thirdButton.style.display = "none";
@@ -94,7 +94,7 @@ function runTimer() {
 function populateQuestion1() {
     header.textContent = questions[0].questionText;
     secondary.textContent = " ";
-    responses.style.border = "thin solid black"
+    responses.style.border = "thin solid black";
     buttons.style.display = "none";
     firstButton.style.display = "block";
     secondButton.style.display = "block";
@@ -105,7 +105,7 @@ function populateQuestion1() {
     secondButton.textContent = questions[0].choice2;
     thirdButton.textContent = questions[0].choice3;
     fourthButton.textContent = questions[0].choice4;
-    document.querySelector("#score").textContent = score
+    document.querySelector("#score").textContent = score;
 }
 
 var buttonList = document.querySelectorAll(".button");
@@ -121,19 +121,19 @@ for (var i = 0; i < buttonList.length; i++) {
         }
         questionIndex++;
         populateQuestion();
-        document.querySelector("#score").textContent = score
+        document.querySelector("#score").textContent = score;
         return score;
-    })
-    
+    });
+
 }
 
 
 function endPage() {
-    timeLeft.textContent = "0"
+    timeLeft.textContent = "0";
     header.textContent = "Time is Up!";
     secondary.textContent = "Your score is " + score;
     firstButton.style.display = "none";
-    responses.setAttribute("type", "button")
+    responses.setAttribute("type", "button");
     secondButton.style.display = "none";
     thirdButton.style.display = "none";
     fourthButton.style.display = "none";
@@ -160,15 +160,15 @@ startQuiz.addEventListener("click", begin);
 function saveScore() {
     console.log(score);
     userName = prompt("Enter Your Initials to Join the Leaderboard");
-    scores.unshift("score");
-    userNames[0].unshift("userName");
+    scores.unshift(score);
+    userNames.unshift(userName);
     localStorage.setItem("scores", JSON.stringify(scores));
     localStorage.setItem("userNames", JSON.stringify(userNames));
 }
 
 retakeButton.addEventListener("click", function () {
     saveScore();
-})
+});
 
 var savedUser = localStorage.getItem("userNames");
 var savedScore = localStorage.getItem("scores");
