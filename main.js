@@ -160,8 +160,8 @@ startQuiz.addEventListener("click", begin);
 function saveScore() {
     console.log(score);
     userName = prompt("Enter Your Initials to Join the Leaderboard");
-    scores[0].unshift(score);
-    userNames[0].unshift(userName);
+    scores.unshift("score");
+    userNames[0].unshift("userName");
     localStorage.setItem("scores", JSON.stringify(scores));
     localStorage.setItem("userNames", JSON.stringify(userNames));
 }
