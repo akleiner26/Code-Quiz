@@ -34,7 +34,25 @@
     </main>
 
    
-    <script src="main.js"></script>
+    <!-- <script src="main.js></script> -->
+    <script>
+        //    for (var i = 0; i <= scores.length; i++) {
+        // if (score >= scores[i]) {
+        //     scores.splice(i, 0, score);
+        //     userNames.splice(i, 0, userName);
+        // } else
+
+    var savedUser = localStorage.getItem("userNames");
+    var savedScore = localStorage.getItem("scores");
+    userNames = JSON.parse(savedUser);
+    scores = JSON.parse(savedScore);
+    firstPlaceName.textContent = userNames[0];
+    secondPlaceName.textContent = userNames[1];
+    thirdPlaceName.textContent = userNames[2];
+    firstPlaceScore.textContent = scores[0];
+    secondPlaceScore.textContent = scores[1];
+    thirdPlaceScore.textContent = scores[2];
+    </script>
 </body>
 
 </html>

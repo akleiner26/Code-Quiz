@@ -18,6 +18,7 @@ var secondPlaceScore = document.getElementById("secondPlaceScore");
 var thirdPlaceScore = document.getElementById("thirdPlaceScore");
 var leaderboardButton = document.getElementById("leaderboard");
 var retakeButton = document.getElementById("retake");
+var userName = " ";
 var questionIndex = 0;
 var scores = [];
 var userNames = [];
@@ -90,6 +91,7 @@ function runTimer() {
             scoreHead.style.display = "none";
             leaderboardButton.style.display = "block";
             retakeButton.style.display = "block";
+            saveScore();
         }
     }, 1000);
     return secondsLeft;
@@ -165,42 +167,22 @@ function begin() {
 //Functions that run the quiz
 startQuiz.addEventListener("click", begin);
 
-//function set to Open Leaderboard
-function goToLeaderboard() {
-    saveScore();
-    var userName = prompt("Enter Your Initials to Join the Leaderboard");
-    localStorage.setItem("scores", JSON.stringify(scores));
-    localStorage.setItem("userNames", JSON.stringify(userNames));
-    window.open("/highScorePage.html");
-    localStorage.getItem(userNames)
-    localStorage.getItem(scores)
-    userNames = JSON.parse(userNames);
-    scores = JSON.parse(scores);
-    firstPlaceName.textContent = userNames[0];
-    secondPlaceName.textContent = userNames[1];
-    thirdPlaceName.textContent = userNames[2];
-    firstPlaceScore.textContent = score[0];
-    secondPlaceScore.textContent = score[1];
-    thirdPlaceScore.textContent = score[2];
-}
 
 //function to add score to scores array in order of value
 function saveScore() {
-    for (var i = 0; i <= scores.length; i++) {
-        if (score >= scores[i]) {
-            scores.splice(i, 0, score);
-            userNames.splice(i, 0, userName);
-        } else scores.push(score);
-        userNames.push(userName);
-    }
+
+    userName = prompt("Enter Your Initials to Join the Leaderboard");
+    scores.push(score);
+    userNames.push(userName);
+    localStorage.setItem("scores", JSON.stringify(scores));
+    localStorage.setItem("userNames", JSON.stringify(userNames));
 }
 
 
 
-leaderboardButton.addEventListener("click", function () {
-    saveScore();
-    goToLeaderboard();
-})
+// leaderboardButton.addEventListener("click", function () {
+//     saveScore();
+// })
 
 retakeButton.addEventListener("click", function(){
     saveScore();
