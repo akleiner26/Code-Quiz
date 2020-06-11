@@ -122,7 +122,9 @@ for (var i = 0; i < buttonList.length; i++) {
         questionIndex++;
         populateQuestion();
         document.querySelector("#score").textContent = score
+        return score;
     })
+    
 }
 
 
