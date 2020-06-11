@@ -12,16 +12,16 @@
 
 <body>
     <header>
-        <a href="" class="float-left ml-2">View High Scores</a>
+        <a href="highScorePage.html" class="float-left ml-2">View High Scores</a>
         <section class="float-right mr-2" id="counter">Timer</section>
     </header>
     <main class="container">
-        <section class="row">
+        <section class="row d-flex">
             <h1 class="text-center col-12 mt-5" id="header">Coding Quiz Challenge</h1>
             <h4 class="text-center col-12 mt-5" id="secondary">Try to Answer the following code-related questions within
                 the time
                 limit. Keep in mind that incorrect answers will penalize your scoretime by ten seconds!</h4>
-            <section class="btn m-auto mt-3" id="responses">
+            <section class="btn m-auto mt-1" id="responses">
                 <button type="button" class= "begin" id="starter">Take Quiz</button>
                 <button type="button" class= "button" id="buttonOne">Take Quiz</button>
                 <div></div>
@@ -31,9 +31,9 @@
                 <div></div>
                 <button type="button" class= "button" id="buttonFour">Take Quiz</button>
                 <div></div>
-                <button type="button" class= "button" id="LeaderBoard">Go To Leaderboard</button>
+                <button type="button" class= "button" id="leaderboard" onclick="window.location='highScorePage.html';">View Leaderboard</button>
                 <div></div>
-                <button type="button" class= "button" id="Retake">Retake Quiz</button>
+                <button type="button" class= "button" onclick="window.location='index.html';" id="retake">Retake Quiz</button>
             </section>
             <div></div>
             <h2 id="scoreHead" class="col-12 text-center">Score=<span id="score">0</span></h2>

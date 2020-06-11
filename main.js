@@ -16,6 +16,8 @@ var thirPlaceName = document.getElementById("thirdPlaceName");
 var firstPlaceScore = document.getElementById("firstPlaceScore");
 var secondPlaceScore = document.getElementById("secondPlaceScore");
 var thirdPlaceScore = document.getElementById("thirdPlaceScore");
+var leaderboardButton = document.getElementById("leaderboard");
+var retakeButton = document.getElementById("retake");
 var questionIndex = 0;
 var scores = [];
 var userNames = [];
@@ -75,20 +77,19 @@ function runTimer() {
         secondsLeft--;
         timeLeft.textContent = secondsLeft;
 
-        if (secondsLeft <= 0) {
+        if (secondsLeft <= 0 || questionIndex >= questions.length) {
             timeLeft.textContent = "0"
             clearInterval(timerInterval);
             header.textContent = "Time is Up!";
             secondary.textContent = "Your score is " + score;
-            firstButton.style.display = "block";
-            firstButton.textContent = "View Leaderboard";
             responses.setAttribute("type", "button")
-            secondButton.style.display = "block";
-            secondButton.textContent = "Retake Quiz";
-            secondButton.setAttribute = ("href", "https://akleiner26.github.io/Code-Quiz/");
+            firstButton.style.display = "none";
+            secondButton.style.display = "none";
             thirdButton.style.display = "none";
             fourthButton.style.display = "none";
             scoreHead.style.display = "none";
+            leaderboardButton.style.display = "block";
+            retakeButton.style.display = "block";
         }
     }, 1000);
     return secondsLeft;
@@ -137,8 +138,7 @@ function endPage() {
     timeLeft.textContent = "0"
     header.textContent = "Time is Up!";
     secondary.textContent = "Your score is " + score;
-    firstButton.style.display = "block";
-    firstButton.textContent = "View Leaderboard";
+    firstButton.style.display = "none";
     responses.setAttribute("type", "button")
     secondButton.style.display = "none";
     thirdButton.style.display = "none";
@@ -166,18 +166,19 @@ function begin() {
 startQuiz.addEventListener("click", begin);
 
 //function set to Open Leaderboard
-function goToLeaderboard(){
+function goToLeaderboard() {
     saveScore();
     var userName = prompt("Enter Your Initials to Join the Leaderboard");
     localStorage.setItem("scores", JSON.stringify(scores));
     localStorage.setItem("userNames", JSON.stringify(userNames));
     window.open("/highScorePage.html");
-    localStorage.getItem()
+    localStorage.getItem(userNames)
+    localStorage.getItem(scores)
     userNames = JSON.parse(userNames);
     scores = JSON.parse(scores);
     firstPlaceName.textContent = userNames[0];
-    secondPlaceName.textContent = userNames [1];
-    thirdPlaceName.textContent = userNames [2];
+    secondPlaceName.textContent = userNames[1];
+    thirdPlaceName.textContent = userNames[2];
     firstPlaceScore.textContent = score[0];
     secondPlaceScore.textContent = score[1];
     thirdPlaceScore.textContent = score[2];
@@ -188,7 +189,7 @@ function saveScore() {
     for (var i = 0; i <= scores.length; i++) {
         if (score >= scores[i]) {
             scores.splice(i, 0, score);
-            userNames.splice(i,0,userName);
+            userNames.splice(i, 0, userName);
         } else scores.push(score);
         userNames.push(userName);
     }
@@ -196,7 +197,11 @@ function saveScore() {
 
 
 
-firstButton.addEventListener("click", function (){
+leaderboardButton.addEventListener("click", function () {
     saveScore();
     goToLeaderboard();
+})
+
+retakeButton.addEventListener("click", function(){
+    saveScore();
 })
