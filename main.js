@@ -19,8 +19,8 @@ var leaderboardButton = document.getElementById("leaderboard");
 var retakeButton = document.getElementById("retake");
 var userName = " ";
 var questionIndex = 0;
-var scores = [];
-var userNames = [];
+var scores = [scores];
+var userNames = [userNames];
 var score = 0;
 var secondsLeft = 30;
 
@@ -160,8 +160,8 @@ startQuiz.addEventListener("click", begin);
 function saveScore() {
     console.log(score);
     userName = prompt("Enter Your Initials to Join the Leaderboard");
-    scores.unshift(score);
-    userNames.unshift(userName);
+    scores[0].unshift(score);
+    userNames[0].unshift(userName);
     localStorage.setItem("scores", JSON.stringify(scores));
     localStorage.setItem("userNames", JSON.stringify(userNames));
 }
