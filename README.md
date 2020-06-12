@@ -9,7 +9,10 @@ One of the most important skills a web developer can have is versatitlity. The a
 
 ## Contributors
 Andrew Kleiner
-Questions Taken From https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS
+Questions Taken From [W3 Schools](https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS)
+
+## Link to Deployed Site
+[Code-Quiz](https://akleiner26.github.io/Code-Quiz/index.html)
 
 ## Screenshots
 ### Opening Page
