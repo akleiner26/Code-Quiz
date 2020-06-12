@@ -120,24 +120,11 @@ for (var i = 0; i < buttonList.length; i++) {
             secondsLeft = secondsLeft - 10;
         }
         questionIndex++;
-        populateQuestion();
+        { populateQuestion() }
         document.querySelector("#score").textContent = score;
         return score;
     });
 
-}
-
-
-function endPage() {
-    timeLeft.textContent = "0";
-    header.textContent = "Time is Up!";
-    secondary.textContent = "Your score is " + score;
-    firstButton.style.display = "none";
-    responses.setAttribute("type", "button");
-    secondButton.style.display = "none";
-    thirdButton.style.display = "none";
-    fourthButton.style.display = "none";
-    scoreHead.style.display = "none";
 }
 
 function populateQuestion() {
