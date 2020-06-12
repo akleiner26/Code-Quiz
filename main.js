@@ -19,8 +19,8 @@ var leaderboardButton = document.getElementById("leaderboard");
 var retakeButton = document.getElementById("retake");
 var userName = " ";
 var questionIndex = 0;
-var scores = [scores];
-var userNames = [userNames];
+var scores = [];
+var userNames = [];
 var score = 0;
 var secondsLeft = 30;
 
