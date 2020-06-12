@@ -172,5 +172,7 @@ retakeButton.addEventListener("click", function () {
 
 var savedUser = localStorage.getItem("userNames");
 var savedScore = localStorage.getItem("scores");
-userNames = JSON.parse(savedUser);
-scores = JSON.parse(savedScore);
+// userNames = JSON.parse(savedUser);
+scores = (!savedScore) ? [] : JSON.parse(savedScore);
+userNames = (!savedUser) ? [] : JSON.parse(savedUser);
+// scores = JSON.parse(savedScore);
